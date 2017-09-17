@@ -5,7 +5,7 @@ const config = {
   target: 'node',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'server.bundle.js',
+    filename: 'index.bundle.js',
   },
   resolve: {
     extensions: [".webpack.js", ".web.js", ".ts", ".js"],

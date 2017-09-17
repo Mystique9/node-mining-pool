@@ -1,2 +1,8 @@
 /build
 /node_modules
+
+.env
+
+config/*
+!config/coin.example.ts
+!config/pool.example.ts

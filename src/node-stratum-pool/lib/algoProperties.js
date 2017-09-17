@@ -3,7 +3,7 @@ const keccak256 = require('js-sha3').keccak256
 const keccak512 = require('js-sha3').keccak512
 console.info(keccak256)
 
-var bignum = require('bignum')
+// var bignum = require('bignum')
 // var multiHashing = require('multi-hashing')
 // var util = require('./util.js')
 
