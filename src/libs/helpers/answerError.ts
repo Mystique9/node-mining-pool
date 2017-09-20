@@ -1,6 +1,6 @@
 import { Response } from 'express'
 
-import log from './log'
+import { logError, logWarn } from './log'
 
 interface AnswerErrorParams {
   res: Response
@@ -11,9 +11,9 @@ interface AnswerErrorParams {
 
 export default function answerError({ res, filePath, err, statusCode }: AnswerErrorParams): Response {
   if (statusCode && statusCode < 500)
-    log.warn(`${filePath}: ${err}`)
+    logWarn(`${filePath}: ${err}`)
   else
-    log.error(`${filePath}: ${err}`)
+    logError(`${filePath}: ${err}`)
 
   if (process.env.NODE_ENV === 'development') {
     return res.status(statusCode || 400).json({

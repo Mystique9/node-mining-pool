@@ -6,6 +6,7 @@ export interface Coin {
   algorithm: 'keccak'
   peerMagic: string
   normalHashing?: boolean
+  reward?: 'POS' | 'POW'
 }
 
 interface PoolPort {

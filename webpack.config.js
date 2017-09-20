@@ -15,6 +15,7 @@ const config = {
       { test: /.*\.ts$/, loader: 'ts-loader', exclude: /node_modules/ },
     ],
   },
+  stats: 'errors-only',
 }
 
 module.exports = [config]

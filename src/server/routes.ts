@@ -2,7 +2,9 @@ import * as path from 'path'
 
 import answerError from '../libs/helpers/answerError'
 
-import ApiPoolController from './controllers/api/pool'
+import ApiDifficultyController from './controllers/api/difficulty'
+import ApiInfoController from './controllers/api/info'
+import ApiValidateAddressController from './controllers/api/validateAddress'
 
 import { Express, Request, Response } from 'express'
 import { BaseControllerMethod } from './controllers/types'
@@ -22,5 +24,7 @@ function answer(req: Request, res: Response, controller: BaseController, method:
 }
 
 export default function routes(app: Express): void {
-  app.get('/api/pool', (req, res) => answer(req, res, new ApiPoolController(req, res), 'get'))
+  app.get('/api/network/difficulty', (req, res) => answer(req, res, new ApiDifficultyController(req, res), 'get'))
+  app.get('/api/info', (req, res) => answer(req, res, new ApiInfoController(req, res), 'get'))
+  app.get('/api/address/validate', (req, res) => answer(req, res, new ApiValidateAddressController(req, res), 'get'))
 }

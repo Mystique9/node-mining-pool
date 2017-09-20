@@ -1,7 +1,7 @@
 import * as express from 'express'
 const mustacheExpress = require('mustache-express')
 
-import log from '../libs/helpers/log'
+import { logInfo, logWarn } from '../libs/helpers/log'
 import routes from './routes'
 
 const port = process.env.PORT || 80
@@ -30,12 +30,12 @@ export default class Server {
 
   public start() {
     if (process.env.NODE_ENV === 'development') {
-      log.warn(`Coinboard Server will start in a development mode.`)
-      this.app.listen(port, () => log.info(`Coinboard Server is listening on port ${port}.`))
+      logWarn(`Coinboard Server will start in a development mode.`)
+      this.app.listen(port, () => logInfo(`Coinboard Server is listening on port ${port}.`))
       return
     }
 
-    log.warn(`Coinboard Server will start in a production mode.`)
-    this.app.listen(port, () => log.info(`Coinboard Server is listening on port ${port}.`))
+    logWarn(`Coinboard Server will start in a production mode.`)
+    this.app.listen(port, () => logInfo(`Coinboard Server is listening on port ${port}.`))
   }
 }

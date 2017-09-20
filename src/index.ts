@@ -9,14 +9,10 @@ import Server from './server'
 
 import poolOptions from '../config/pool'
 
-type LogType = 'Error' | 'Info' | 'Log' | 'Warning'
-
 const pool = new Pool(poolOptions)
 const server = new Server()
 
-pool.on('log', (logType: LogType, message: string) => {
-  console.log(`${logType}: ${message}`)
-})
+pool.on('log', (message: string) => console.log(`${message}`))
 
 pool.start()
 server.start()

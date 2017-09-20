@@ -1,14 +1,18 @@
 import { Request, Response } from 'express'
 
 import answerError from '../../libs/helpers/answerError'
-import log from '../../libs/helpers/log'
+import { log, logError } from '../../libs/helpers/log'
 import validateJsonSchema, { Schema } from '../../libs/helpers/validateJsonSchema'
+import Deamon from '../../deamon'
 
 import { BaseControllerResponse } from './types'
+
+import poolOptions from '../../../config/pool'
 
 export interface BaseController {}
 
 export abstract class BaseController {
+  protected deamon = new Deamon(poolOptions.daemon)
   protected filePath = this.constructor.name
 
   constructor(
@@ -26,7 +30,7 @@ export abstract class BaseController {
   }
 
   protected logError(message: string): void {
-    log.error(`${this.filePath}: ${message}`)
+    logError(`${this.filePath}: ${message}`)
   }
 
   protected answerError(err: string, statusCode?: number): Response {

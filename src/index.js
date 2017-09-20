@@ -8,7 +8,7 @@ const eduCoin = {
 
     /* This is not required and set to false by default. Some coins such as Copperlark and eCoin
        require it to be set to true. Maxcoin and most others are false. */
-    "normalHashing": true
+    "normalHashing": false
 }
 
 

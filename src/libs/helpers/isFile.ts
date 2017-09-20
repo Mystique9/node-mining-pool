@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 
-import log from './log'
+import { logError } from './log'
 
 export default function isFile(filePath: string): boolean {
   try {
@@ -8,7 +8,7 @@ export default function isFile(filePath: string): boolean {
     return true
   }
   catch (err) {
-    log.error(`${err}`)
+    logError(`${err}`)
     return false
   }
 }
