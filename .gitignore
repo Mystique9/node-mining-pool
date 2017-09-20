@@ -6,3 +6,6 @@
 config/*
 !config/coin.example.ts
 !config/pool.example.ts
+
+TODO Remove it
+/src/node-stratum-pool
