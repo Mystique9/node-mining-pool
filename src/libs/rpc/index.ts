@@ -45,7 +45,6 @@ export default class Rpc {
     return new Promise((resolve, reject) => {
       const req = http.request(options, res => {
         let data = '';
-        // res.setEncoding('utf8')
 
         res.on('data', chunk => data += chunk)
 
@@ -56,8 +55,7 @@ export default class Rpc {
       })
 
       req.on('error', err => {
-        logError(`Failed RPC request on '${method}'`)
-        console.log(err)
+        logError(`Failed RPC request on '${method}': ${err.message}`)
         reject(err)
       });
 
