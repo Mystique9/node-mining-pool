@@ -2,6 +2,7 @@ import { EventEmitter } from 'events'
 import { blue, green, red } from 'chalk'
 
 import Daemon from '../deamon'
+import Stratum from '../stratum'
 
 import { PoolOptions } from './types'
 import { RpcRequestParams, RpcResponse } from '../libs/rpc/types'
@@ -9,12 +10,15 @@ import { RpcRequestParams, RpcResponse } from '../libs/rpc/types'
 export default class Pool extends EventEmitter {
   private deamon: Daemon
   private options: PoolOptions
+  private stratum: Stratum
 
   constructor(options: PoolOptions) {
     super()
 
-    this.deamon = new Daemon(options.daemon)
     this.options = options
+
+    this.deamon = new Daemon(options.daemon)
+    this.stratum = new Stratum({ port: options.ports[0].port })
   }
 
   private emitLog(text: string): void { this.emit('log', green(text)) }
@@ -26,8 +30,8 @@ export default class Pool extends EventEmitter {
     this.emitLog('Pool::start()')
 
     this.deamon.isOnline()
-    .then(() => this.analyseDeamon())
-    .catch((error: Error) => this.emitError(error.message))
+      .then(() => this.analyseDeamon())
+      .catch((error: Error) => this.emitError(error.message))
   }
 
   private analyseDeamon() {
@@ -84,6 +88,10 @@ export default class Pool extends EventEmitter {
   }
 
   private run() {
+    this.stratumStart()
+  }
 
+  private stratumStart() {
+    this.stratum.start()
   }
 }

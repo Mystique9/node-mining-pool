@@ -1,0 +1,10 @@
+{
+  "verbose": true,
+  "watch": [
+    "./src"
+  ],
+  "execMap": {
+    "build": "npm run build",
+    "start": "node ./build/index.bundle.js"
+  }
+}

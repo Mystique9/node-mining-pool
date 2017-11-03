@@ -16,3 +16,7 @@ pool.on('log', (message: string) => console.log(`${message}`))
 
 pool.start()
 server.start()
+
+// process.once('SIGUSR2', () => {
+//   process.kill(process.pid, 'SIGUSR2');
+// })

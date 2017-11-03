@@ -8,4 +8,5 @@ config/*
 !config/pool.example.ts
 
 TODO Remove it
+/src/node-stratum-master
 /src/node-stratum-pool

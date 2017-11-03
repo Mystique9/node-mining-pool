@@ -15,6 +15,12 @@ const config = {
       { test: /.*\.ts$/, loader: 'ts-loader', exclude: /node_modules/ },
     ],
   },
+  watch: false,
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000,
+    ignored: /node_modules/,
+  },
   stats: 'errors-only',
 }
 
